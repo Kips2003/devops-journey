@@ -1,0 +1,11 @@
+#cloud-config
+users:
+  - name: giorgi
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-ed25519 <YOUR_PUBLIC_KEY>
+package_update: true
+packages: [qemu-guest-agent]
+runcmd:
+  - systemctl enable --now qemu-guest-agent
